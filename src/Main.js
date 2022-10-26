@@ -11,10 +11,10 @@ const Main = () => {
             <Header></Header>
             <Container>
                 <Row>
-                    <Col lg='2' className='d-none d-lg-block' >
+                    <Col lg='3' >
                         <LeftSideNav></LeftSideNav>
                     </Col>
-                    <Col lg='10'>
+                    <Col lg='9'>
                         <Outlet></Outlet>
                     </Col>
                 </Row>
