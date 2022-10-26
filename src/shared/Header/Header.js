@@ -6,6 +6,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import Button from 'react-bootstrap/Button';
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
+
 
 const Header = () => {
     const { user } = useContext(AuthContext);
@@ -31,16 +35,19 @@ const Header = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            <Link className='text-decoration-none text-white mx-3' to="/courses">Courses</Link>
-                            <Link className='text-decoration-none text-white mx-3' to="/faq">FAQ</Link>
-                            <Link className='text-decoration-none text-white mx-3' to="/blog">BLOG</Link>
-                            <Link className='text-decoration-none text-white mx-3' eventKey={2} to="#memes">
+                            <Link className='text-decoration-none text-white px-4 py-2 ' to="/courses">Courses</Link>
+                            <Link className='text-decoration-none text-white px-4 py-2 ' to="/faq">FAQ</Link>
+                            <Link className='text-decoration-none text-white px-4 py-2 ' to="/blog">BLOG</Link>
+                            <Link className='text-decoration-none  text-white px-4 py-2 ' to="/blog">Log In</Link>
+                            <Link className='text-decoration-none bg-light px-4 py-2 rounded text-warning fw-bold ' to="/blog">Sign Up</Link>
+                            <Link className='text-decoration-none text-white ' eventKey={2} to="#memes">
                                 {user.displayName}
                             </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
         </div>
     );
 };
