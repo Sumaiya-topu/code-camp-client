@@ -31,10 +31,10 @@ const Header = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            <Link to="/courses">Courses</Link>
-                            <Link to="/faq">FAQ</Link>
-                            <Link to="/blog">BLOG</Link>
-                            <Link eventKey={2} to="#memes">
+                            <Link className='text-decoration-none text-white mx-3' to="/courses">Courses</Link>
+                            <Link className='text-decoration-none text-white mx-3' to="/faq">FAQ</Link>
+                            <Link className='text-decoration-none text-white mx-3' to="/blog">BLOG</Link>
+                            <Link className='text-decoration-none text-white mx-3' eventKey={2} to="#memes">
                                 {user.displayName}
                             </Link>
                         </Nav>

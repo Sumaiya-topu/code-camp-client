@@ -7,17 +7,20 @@ const Category = () => {
     const course = useLoaderData();
 
     return (
-        <Card >
-            <Card.Img variant="top" src={course.img} />
-            <Card.Body>
-                <Card.Title>{course.name}</Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-        </Card>
+        <div className='mt-5 p-4'>
+            <Card className=' p-5 h-25 w-100 mx-auto d-flex flex-row'>
+                <Card.Img variant="top" src={course.img} className=" p-0 img-fluid w-50 h-50" />
+                <div className=' ps-5 d-flex align-items-center'>
+                    <Card.Body >
+                        <Card.Title>{course.name}</Card.Title>
+                        <Card.Text>
+                            {course.details}
+                        </Card.Text>
+                        <Button variant="primary">Start Learning</Button>
+                    </Card.Body>
+                </div>
+            </Card>
+        </div>
     );
 };
 
