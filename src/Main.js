@@ -5,6 +5,8 @@ import Footer from './shared/Footer/Footer';
 import Header from './shared/Header/Header'
 import LeftSideNav from './shared/LeftSideNav/LeftSideNav';
 
+import Home from './Layout/Pages/Home/Home';
+
 const Main = () => {
     return (
         <div>

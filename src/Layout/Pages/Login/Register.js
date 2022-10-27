@@ -1,14 +1,22 @@
+import { getAuth, updateProfile } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/home';
+
+
     const [error, setError] = useState('');
     const { createUser } = useContext(AuthContext);
+    const auth = getAuth();
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -26,6 +34,17 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
+                updateProfile(auth.currentUser, {
+                    displayName: name, photoURL: photoURL
+                }).then(() => {
+                    // Profile updated!
+                    // ...
+                })
+                    .catch((error) => {
+                        // An error occurred
+                        // ...
+                    });
+                navigate(from, { replace: true });
 
             })
             .catch(e => {

@@ -6,6 +6,7 @@ import Main from "../Main";
 import Home from "../Layout/Pages/Home/Home"
 import Checkout from "../Layout/Pages/CheckOut/Checkout";
 import PrivateRoute from "./PrivateRoute";
+import Blog from "../Layout/Pages/Blog/Blog";
 
 export const routes = createBrowserRouter([
     {
@@ -13,7 +14,7 @@ export const routes = createBrowserRouter([
         element: <Main></Main>,
         children: [
             {
-                path: '/home',
+                path: '/',
                 element: <Home></Home>
             },
             {
@@ -31,14 +32,6 @@ export const routes = createBrowserRouter([
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
             {
-                path: '/courses',
-                element: <p>This is courses page</p>
-            },
-            {
-                path: '/blog',
-                element: <p>This is blog page</p>
-            },
-            {
                 path: '/faq',
                 element: <p>This is faq</p>
             },
@@ -51,5 +44,13 @@ export const routes = createBrowserRouter([
                 element: <Register></Register>
             },
         ]
+    },
+    {
+        path: '/blog',
+        element: <Blog></Blog>
+    },
+    {
+        path: '*',
+        element: <h1 className="text-center">Not Found 😝</h1>
     }
 ])
