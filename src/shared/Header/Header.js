@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
+import logo from '../../image/logo.png';
 
 
 
@@ -23,6 +24,7 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
+                    <img className='me-2' style={{ height: '40px' }} src={logo} alt="" />
                     <Link className='text-decoration-none fs-2 text-white fw-semi-bold' to='/home'>CODE-CAMP</Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -38,7 +40,7 @@ const Header = () => {
                                 user?.email ?
 
                                     <>
-                                        <Link className='text-decoration-none text-white px-4 py-2 ' eventKey={2} to="#memes">
+                                        <Link title={user.displayName} className='text-decoration-none text-white px-4 py-2 ' eventKey={2} to="#memes">
 
                                             {
                                                 user.displayName

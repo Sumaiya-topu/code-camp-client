@@ -21,7 +21,7 @@ const LeftSideNav = () => {
 
     const googleProvider = new GoogleAuthProvider();
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://code-camp-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data));
     }, [])

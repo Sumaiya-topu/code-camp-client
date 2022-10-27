@@ -19,14 +19,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/categories/:id',
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/categories/${params.id}`)
+                    return fetch(`https://code-camp-server.vercel.app/categories/${params.id}`)
                 },
                 element: <Category></Category>,
             },
             {
                 path: '/checkout/:id',
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/categories/${params.id}`)
+                    return fetch(`https://code-camp-server.vercel.app/categories/${params.id}`)
                 },
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
