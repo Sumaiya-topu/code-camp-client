@@ -16,7 +16,7 @@ import { useState } from 'react';
 
 
 const Header = () => {
-    const { theme, setTheme } = useState(true)
+    const [theme, setTheme] = useState(false)
     const { user, logOut } = useContext(AuthContext);
     const handleLogOut = () => {
         logOut()
@@ -66,10 +66,10 @@ const Header = () => {
                         </Nav>
 
                         {
-                            theme ? <Button className='bg-dark border-none'><FaSun /></Button> : <Button className='bg-dark'><FaMoon /></Button>
-
+                            theme ? <Button onClick={() => setTheme(!theme)} className='bg-dark '><FaSun /></Button> : <Button onClick={() => setTheme(!theme)} className='bg-dark'> <FaMoon /></Button>
                         }
-                        <Button onClick={setTheme(!theme)} className='bg-dark'>{theme ? <FaSun /> : <FaMoon />}</Button>
+
+
 
 
 
