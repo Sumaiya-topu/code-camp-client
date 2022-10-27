@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 
@@ -11,6 +11,9 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 const Login = () => {
     const [error, setError] = useState('')
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/home';
 
     const { signIn } = useContext(AuthContext);
     const handleSubmit = event => {
@@ -24,7 +27,7 @@ const Login = () => {
                 console.log(user)
                 form.reset();
                 setError('');
-                navigate('/home');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error)
