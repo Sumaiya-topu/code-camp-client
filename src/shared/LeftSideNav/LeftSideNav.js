@@ -13,6 +13,8 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const LeftSideNav = () => {
+    const { user, logOut } = useContext(AuthContext);
+
     const { providerLogin } = useContext(AuthContext)
 
     const [categories, setCategories] = useState([]);
@@ -35,12 +37,14 @@ const LeftSideNav = () => {
 
     return (
         <div>
-            <Container>
-                <div className='d-flex flex-column gap-1 mt-2'>
-                    <Button className='border border-dark-50' variant="light"> <FaGithub></FaGithub> Sign In with Github</Button>{' '}
-                    <Button onClick={handleGoogleSignIn} className='border border-warning bg-white text-warning'> <FcGoogle></FcGoogle> Sign In with Google</Button>{' '}
-                </div>
-            </Container>
+            {
+                user ? <></> : <Container>
+                    <div className='d-flex flex-column gap-1 mt-2'>
+                        <Button className='border border-dark-50' variant="light"> <FaGithub></FaGithub> Sign In with Github</Button>{' '}
+                        <Button onClick={handleGoogleSignIn} className='border border-warning bg-white text-warning'> <FcGoogle></FcGoogle> Sign In with Google</Button>{' '}
+                    </div>
+                </Container>
+            }
             <h4 className='mt-4 text-center'>Categories</h4>
             <div className='mt-3'>
                 {

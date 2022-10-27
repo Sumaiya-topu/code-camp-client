@@ -19,7 +19,7 @@ const Category = () => {
                             <Card.Text>
                                 {course.details}
                             </Card.Text>
-                            <Button variant="primary">Start Learning</Button>
+                            <Button variant="primary">Buy Course</Button>
                         </Card.Body>
                     </div>
                 </Card>

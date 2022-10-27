@@ -12,27 +12,22 @@ import { FaUser } from 'react-icons/fa';
 
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/">CODE-CAMP</Navbar.Brand>
+                    <Link className='text-decoration-none fs-2 text-white fw-semi-bold' to='/home'>CODE-CAMP</Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
 
-                            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">
-                                    Another action
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Separated link
-                                </NavDropdown.Item>
-                            </NavDropdown>
                         </Nav>
                         <Nav>
                             <Link className='text-decoration-none text-white px-4 py-2 ' to="/courses">Courses</Link>
@@ -40,22 +35,25 @@ const Header = () => {
                             <Link className='text-decoration-none text-white px-4 py-2 ' to="/blog">BLOG</Link>
 
                             {
-                                user.email ?
+                                user?.email ?
 
-                                    <Link className='text-decoration-none text-white px-4 py-2 ' eventKey={2} to="#memes">
+                                    <>
+                                        <Link className='text-decoration-none text-white px-4 py-2 ' eventKey={2} to="#memes">
 
-                                        {
-                                            user.displayName
-                                        }
-                                        {
-                                            user.photoURL ? <Image className='ms-2' style={{ height: '30px' }} roundedCircle src={user.photoURL}></Image> : <FaUser></FaUser>
+                                            {
+                                                user.displayName
+                                            }
+                                            {
+                                                user?.photoURL ? <Image className='ms-2' style={{ height: '30px' }} roundedCircle src={user.photoURL}></Image> : <FaUser></FaUser>
 
-                                        }
-                                    </Link>
-                                    : <div>
-                                        <Link className='text-decoration-none  text-white px-4 py-2 ' to="/blog">Log In</Link>
-                                        <Link className='text-decoration-none bg-light px-4 py-2 rounded text-warning fw-bold ' to="/blog">Sign Up</Link>
-                                    </div>
+                                            }
+                                        </Link>
+                                        <Link onClick={handleLogOut} className='text-decoration-none  text-white px-4 py-2 ' to="/home">Log out</Link>
+                                    </>
+                                    : <>
+                                        <Link className='text-decoration-none  text-white px-4 py-2 ' to="/login">Log In</Link>
+                                        <Link className='text-decoration-none bg-light px-4 py-2 rounded text-warning fw-bold ' to="/register">Register</Link>
+                                    </>
                             }
 
 
